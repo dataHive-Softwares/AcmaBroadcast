@@ -53,6 +53,14 @@ class GenericNativeAdView @JvmOverloads constructor(
         }
     }
 
+    fun loadAdForListContent() {
+        if (shouldEnableNativeAds.value == true) {
+            showAd()
+        } else {
+            hideAd()
+        }
+    }
+
     private var isAdAlreadyLoaded = false
 
     private val observer = Observer { enabled: Boolean ->

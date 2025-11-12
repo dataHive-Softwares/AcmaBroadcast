@@ -1,11 +1,14 @@
 package com.acma.acmabroadtools
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.acma.boradcast.core.utils.UnboxUtils
+import com.acma.broad.helper.interstitial.InterstitialHelper
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,6 +21,14 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+
+        findViewById<AppCompatButton>(R.id.adButton).setOnClickListener {
+            InterstitialHelper.showAd(this, {
+                Toast.makeText(this,"Ad Closed",Toast.LENGTH_SHORT).show()
+            })
+        }
+
 
 
     }
