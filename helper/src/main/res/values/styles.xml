@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="GenericNativeAdView">
+        <attr name="native_content_type" format="enum">
+            <enum name="content_default" value="0" />
+            <enum name="content_small" value="1" />
+            <enum name="content_medium" value="2" />
+            <enum name="content_large" value="3" />
+        </attr>
+        <attr name="native_ad_type" format="enum">
+            <enum name="native_default" value="0" />
+            <enum name="native_card" value="1" />
+        </attr>
+    </declare-styleable>
+
+
+    <style name="RatingBar" parent="Theme.MaterialComponents.Bridge">
+        <item name="colorControlNormal">@color/colorRatingNormal</item>
+        <item name="colorControlActivated">@color/colorRatingActivated</item>
+    </style>
+
+
+</resources>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_1sdp"
+        android:layout_marginHorizontal="@dimen/_2sdp"
+        android:background="@drawable/bg_ad_border"
+        app:shimmer_auto_start="true"
+        app:shimmer_clip_to_children="true"
+        app:shimmer_repeat_count="2">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_ad_border">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/glStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="8dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/glEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="8dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/glTop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="8dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/glBottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_end="8dp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivAd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                app:layout_constraintStart_toStartOf="@+id/glStart"
+                app:layout_constraintTop_toTopOf="@+id/glTop"
+                app:srcCompat="@drawable/ic_ad" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvIcon"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginTop="4dp"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintStart_toStartOf="@+id/glStart"
+                app:layout_constraintTop_toBottomOf="@+id/ivAd">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iconView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorLoadingAd" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/headlineView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/colorLoadingAd"
+                android:ellipsize="marquee"
+                android:fadingEdge="horizontal"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:maxLength="25"
+                android:singleLine="true"
+                android:textColor="@color/colorHeadLine"
+                android:textSize="14sp"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toEndOf="@+id/glEnd"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@+id/cvIcon"
+                app:layout_constraintTop_toBottomOf="@+id/ivAd" />
+
+            <TextView
+                android:id="@+id/bodyView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@color/colorLoadingAd"
+                android:lines="2"
+                android:maxLength="90"
+                android:textSize="12sp"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toEndOf="@+id/glEnd"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="@+id/headlineView"
+                app:layout_constraintTop_toBottomOf="@+id/headlineView" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/starRatingView"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@color/colorLoadingAd"
+                app:layout_constraintStart_toStartOf="@+id/headlineView"
+                app:layout_constraintTop_toBottomOf="@+id/bodyView" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/storeView"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="4dp"
+                android:background="@color/colorLoadingAd"
+                android:textColor="@color/colorAdvertiser"
+                app:layout_constraintEnd_toStartOf="@+id/advertiserView"
+                app:layout_constraintStart_toEndOf="@+id/starRatingView"
+                app:layout_constraintTop_toTopOf="@+id/starRatingView" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/advertiserView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorLoadingAd"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toEndOf="@+id/glEnd"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@+id/storeView"
+                app:layout_constraintTop_toTopOf="@+id/starRatingView" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrierTop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:barrierMargin="8dp"
+                app:constraint_referenced_ids="cvIcon,starRatingView,storeView,advertiserView" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/callToActionView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorActionText"
+                app:backgroundTint="@color/colorActionBackgroundTint"
+                app:layout_constraintBottom_toBottomOf="@+id/glBottom"
+                app:layout_constraintEnd_toEndOf="@+id/glEnd"
+                app:layout_constraintStart_toStartOf="@+id/glStart"
+                app:layout_constraintTop_toBottomOf="@+id/barrierTop" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+</merge>

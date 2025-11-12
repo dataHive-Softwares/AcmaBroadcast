@@ -1,0 +1,10 @@
+<com.google.android.gms.ads.nativead.NativeAdView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nativeView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:background="#FFF">
+
+    <!--  contents will be added based on given type  -->
+
+</com.google.android.gms.ads.nativead.NativeAdView>

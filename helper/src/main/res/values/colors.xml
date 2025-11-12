@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="colorLoadingAd">#dddddd</color>
+    <color name="colorAdBorder">#000000</color>
+
+    <color name="colorHeadLine">#13515A</color>
+    <color name="colorBody">#303030</color>
+    <color name="colorAdvertiser">#303030</color>
+    <color name="colorActionText">#FFFFFF</color>
+    <color name="colorActionBackgroundTint">#13515A</color>
+    <color name="colorActionTint">#13515A</color>
+    <color name="colorActionTintPressed">#8D8D8D</color>
+    <color name="colorRatingActivated">#FFC25C</color>
+    <color name="colorRatingNormal">#8D8D8D</color>
+    <color name="ad_banner_bg_color">#c90707</color>
+</resources>

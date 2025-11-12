@@ -1,0 +1,13 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="25dp"
+    android:height="14dp"
+    android:viewportWidth="25"
+    android:viewportHeight="14">
+
+    <path
+        android:fillColor="@color/ad_banner_bg_color"
+        android:pathData="M0,0H25a0,0 0,0 1,0 0V2A12,12 0,0 1,13 14H0a0,0 0,0 1,0 0V0A0,0 0,0 1,0 0Z" />
+    <path
+        android:fillColor="#fff"
+        android:pathData="M10.426,11.201L8.899,11.201l-0.756,-2.139h-3.3L4.11,11.201L2.587,11.201l3.146,-8.4L7.299,2.801ZM7.772,7.926 L6.606,4.574A3.97,3.97 0,0 1,6.499 4.047h-0.023a3.43,3.43 0,0 1,-0.117 0.527L5.199,7.926ZM11.341,11.201L11.341,2.801L13.767,2.801q4.646,0 4.646,4.1A4.036,4.036 0,0 1,17.124 10.02,4.92 4.92,0 0,1 13.667,11.201ZM12.729,3.982v6.041L13.843,10.023a3.113,3.113 0,0 0,2.288 -0.809,3.071 3.071,0 0,0 0.817,-2.285q0,-2.947 -3.053,-2.947Z" />
+</vector>
