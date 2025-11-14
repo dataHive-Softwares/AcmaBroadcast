@@ -1,6 +1,17 @@
 package com.acma.broad.helper.extension
 
-import android.view.LayoutInflater
-import android.view.View
+import android.app.Activity
+import android.content.Context
+import android.content.ContextWrapper
 
-fun View.layoutInflater() = LayoutInflater.from(context)
+
+/**
+ * Safely unwrap Activity from Context or ContextWrapper.
+ */
+
+internal fun Context.findActivity(): Activity? = when (this) {
+    is Activity -> this
+    is ContextWrapper -> baseContext.findActivity()
+    else -> null
+}
+

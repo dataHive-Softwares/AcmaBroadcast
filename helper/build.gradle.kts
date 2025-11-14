@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+
 }
 
 android {
@@ -30,6 +32,10 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
+
+    buildFeatures {
+        compose = true
+    }
 }
 
 dependencies {
@@ -44,5 +50,28 @@ dependencies {
     // Ads
     api(libs.play.services.ads)
 
+    implementation(libs.kotlinx.serialization)
+
+
+    // Use Compose BOM - Use 'api' to expose it to the app module
+    api(platform(libs.androidx.compose.bom))
+
+    // Compose Runtime
+    api(libs.androidx.runtime)
+
+    // Compose Foundation
+    api(libs.androidx.foundation)
+    api(libs.androidx.foundation.layout)
+
+    // Preview support
+    api(libs.androidx.ui.tooling.preview)
+
+    // Debug-only tooling
+    debugImplementation(libs.androidx.ui.tooling)
+
+    // Other compose dependencies
+    api(libs.androidx.ui)
+    api(libs.androidx.ui.graphics)
+    api(libs.androidx.material3)
 
 }

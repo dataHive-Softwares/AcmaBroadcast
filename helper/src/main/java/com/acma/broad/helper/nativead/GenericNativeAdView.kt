@@ -3,15 +3,12 @@ package com.acma.broad.helper.nativead
 import android.content.Context
 import android.util.AttributeSet
 import android.util.Log
-import android.util.TypedValue
 import android.view.View
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.RatingBar
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.core.content.withStyledAttributes
 import androidx.lifecycle.Observer
 import com.acma.broad.helper.R
