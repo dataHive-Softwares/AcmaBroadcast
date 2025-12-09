@@ -1,22 +1,22 @@
-package com.acma.acmabroadtools
+package com.acma.acmabroadtools.playground.xml
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.acma.acmabroadtools.databinding.FragmentComposeAdsHostBinding
+import com.acma.acmabroadtools.databinding.FragmentNativeAdBinding
 
-class ComposeAdsHostFragment : Fragment() {
+class NativeAdFragment : Fragment() {
 
-    private var _binding: FragmentComposeAdsHostBinding? = null
+    private var _binding: FragmentNativeAdBinding? = null
     private val binding get() = _binding!!
+
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentComposeAdsHostBinding.inflate(inflater, container, false)
+        _binding = FragmentNativeAdBinding.inflate(inflater, container, false)
         return binding.root
     }
 

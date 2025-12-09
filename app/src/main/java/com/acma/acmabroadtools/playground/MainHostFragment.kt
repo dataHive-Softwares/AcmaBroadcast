@@ -1,4 +1,4 @@
-package com.acma.acmabroadtools
+package com.acma.acmabroadtools.playground
 
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.acma.acmabroadtools.R
 import com.acma.acmabroadtools.databinding.FragmentMainHostBinding
 import com.acma.broad.helper.AdSdkInitializer
 import com.acma.broad.helper.interstitial.InterstitialHelper

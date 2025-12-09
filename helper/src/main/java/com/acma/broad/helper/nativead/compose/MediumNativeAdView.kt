@@ -1,5 +1,6 @@
-package com.example.sdkads.nativead
+package com.acma.broad.helper.nativead.compose
 
+import android.graphics.Color
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -7,6 +8,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
 import com.google.android.gms.ads.nativead.NativeAd
 import com.google.android.gms.ads.nativead.NativeAdView
@@ -44,8 +46,8 @@ import com.google.android.gms.ads.nativead.NativeAdView
  */
 
 @Composable
-fun MediumNativeAdView(nativeAd: NativeAd, modifier: Modifier = Modifier) {
-    val context = androidx.compose.ui.platform.LocalContext.current
+internal fun MediumNativeAdView(nativeAd: NativeAd, modifier: Modifier = Modifier) {
+    val context = LocalContext.current
 
     AndroidView(
         factory = {
@@ -66,7 +68,7 @@ fun MediumNativeAdView(nativeAd: NativeAd, modifier: Modifier = Modifier) {
                 id = View.generateViewId()
                 text = nativeAd.headline
                 textSize = 18f
-                setTextColor(android.graphics.Color.BLACK)
+                setTextColor(Color.BLACK)
             }
 
             // Advertiser TextView (optional)
@@ -74,7 +76,7 @@ fun MediumNativeAdView(nativeAd: NativeAd, modifier: Modifier = Modifier) {
                 id = View.generateViewId()
                 text = nativeAd.advertiser
                 textSize = 14f
-                setTextColor(android.graphics.Color.DKGRAY)
+                setTextColor(Color.DKGRAY)
             }
 
             // Body TextView (optional)
@@ -82,7 +84,7 @@ fun MediumNativeAdView(nativeAd: NativeAd, modifier: Modifier = Modifier) {
                 id = View.generateViewId()
                 text = nativeAd.body
                 textSize = 14f
-                setTextColor(android.graphics.Color.DKGRAY)
+                setTextColor(Color.DKGRAY)
             }
 
             // Call to Action Button (required if available)
@@ -95,7 +97,7 @@ fun MediumNativeAdView(nativeAd: NativeAd, modifier: Modifier = Modifier) {
             val verticalLayout = LinearLayout(context).apply {
                 orientation = LinearLayout.VERTICAL
                 setPadding(16, 16, 16, 16)
-                setBackgroundColor(android.graphics.Color.WHITE)
+                setBackgroundColor(Color.WHITE)
 
                 addView(headlineView)
                 addView(advertiserView)

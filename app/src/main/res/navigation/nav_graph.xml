@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/mainHostFragment"
-        android:name="com.acma.acmabroadtools.MainHostFragment"
+        android:name="com.acma.acmabroadtools.playground.MainHostFragment"
         android:label="fragment_main_host"
         tools:layout="@layout/fragment_main_host"/>
 
     <fragment
         android:id="@+id/xmlAdsHostFragment"
-        android:name="com.acma.acmabroadtools.XmlAdsHostFragment"
+        android:name="com.acma.acmabroadtools.playground.xml.XmlAdsHostFragment"
         android:label="fragment_xml_ads_host"
         tools:layout="@layout/fragment_xml_ads_host"/>
 
     <fragment
         android:id="@+id/composeAdsHostFragment"
-        android:name="com.acma.acmabroadtools.ComposeAdsHostFragment"
+        android:name="com.acma.acmabroadtools.playground.compose.ComposeAdsHostFragment"
         android:label="fragment_compose_ads_host"
         tools:layout="@layout/fragment_compose_ads_host"/>
 

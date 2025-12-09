@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".playground.xml.NativeAdFragment">
+
+<!--    Large-->
+    <com.acma.broad.helper.nativead.GenericNativeAdView
+        android:id="@+id/native_ad_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:native_content_type="content_large"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+<!--    Medium-->
+    <com.acma.broad.helper.nativead.GenericNativeAdView
+        android:id="@+id/native_ad_view_medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/native_ad_view"
+        app:native_content_type="content_medium"/>
+
+<!--    Small-->
+    <com.acma.broad.helper.nativead.GenericNativeAdView
+        android:id="@+id/native_ad_view_small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/native_ad_view_medium"
+        app:native_content_type="content_small"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,10 +8,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import com.acma.broad.helper.core.AdsConfig
-import com.example.sdkads.nativead.LargeNativeAdView
-import com.example.sdkads.nativead.MediumNativeAdView
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest

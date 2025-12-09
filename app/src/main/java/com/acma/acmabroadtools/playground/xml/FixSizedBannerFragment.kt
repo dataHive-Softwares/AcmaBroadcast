@@ -1,23 +1,22 @@
-package com.acma.acmabroadtools
+package com.acma.acmabroadtools.playground.xml
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.acma.acmabroadtools.databinding.FragmentXmlAdsHostBinding
+import com.acma.acmabroadtools.databinding.FragmentFixSizedBannerBinding
 
-class XmlAdsHostFragment : Fragment() {
+class FixSizedBannerFragment : Fragment() {
 
-    private var _binding: FragmentXmlAdsHostBinding? = null
+    private var _binding: FragmentFixSizedBannerBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentXmlAdsHostBinding.inflate(inflater, container, false)
+        _binding = FragmentFixSizedBannerBinding.inflate(inflater, container, false)
         return binding.root
     }
 
