@@ -7,35 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.acma.broad.helper.nativead.GenericNativeAdView
-        android:id="@+id/nativeViewMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:native_content_type="content_small"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.acma.broad.helper.banner.adaptivebanner.AdaptiveBannerView
-        android:id="@+id/bannerTop"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/_10sdp"
-        app:layout_constraintTop_toBottomOf="@id/nativeViewMedium"/>
-
-
-    <com.acma.broad.helper.banner.collapsablebanner.CollapsibleBannerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/bannerTop" />
-
-
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/adButton"
-        android:text="Show Ad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

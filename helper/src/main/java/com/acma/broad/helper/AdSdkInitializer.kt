@@ -7,6 +7,8 @@ import com.acma.broad.helper.appopen.AppOpenAdHelper
 import com.acma.broad.helper.consentmanager.ConsentManager
 import com.acma.broad.helper.core.AdsConfig
 import com.acma.broad.helper.interstitial.InterstitialHelper
+import com.acma.broad.helper.rewarded.RewardedAdHelper
+import com.acma.broad.helper.rewarded.RewardedInterstitialHelper
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.RequestConfiguration
 
@@ -81,24 +83,25 @@ object AdSdkInitializer{
         AdsConfig.REWARDED_AD_ID = rewardAd
         AdsConfig.NATIVE_AD_ID = nativeAd
         AdsConfig.COLLAPSIBLE_BANNER_ID = collapsibleBannerAd
+        AdsConfig.HashedId = testDeviceIds.first()
+
 
         // Initialize Google Mobile Ads SDK
         MobileAds.initialize(application) {
             // Once initialized, load interstitial ads if not already loaded
-
             loadAdOnce(::isInterstitialLoaded, { isInterstitialLoaded = true }) {
-                Log.d("TAG", "Loading Interstitial Ad...")
+                Log.d("AdDemo", "Loading Interstitial Ad...")
                 InterstitialHelper.initLoadAd(application)
             }
             // Once initialized, load reward interstitial ads if not already loaded
             loadAdOnce(::isRewardInterstitialLoaded, { isRewardInterstitialLoaded = true }) {
-                Log.d("TAG", "Loading Rewarded Interstitial Ad...")
-//                RewardedInterstitialHelper.initLoadAd(application)
+                Log.d("AdDemo", "Loading Rewarded Interstitial Ad...")
+                RewardedInterstitialHelper.initLoadAd(application)
             }
             // Once initialized, load reward ads if not already loaded
             loadAdOnce(::isRewardLoaded, { isRewardLoaded = true }) {
-                Log.d("TAG", "Loading Rewarded Ad...")
-//                RewardedAdHelper.initLoadAd(application)
+                Log.d("AdDemo", "Loading Rewarded Ad...")
+                RewardedAdHelper.initLoadAd(application)
             }
         }
 
@@ -124,6 +127,8 @@ object AdSdkInitializer{
             onLoad()
         }
     }
+
+
 
     /**
      * Requests user consent using Google’s Consent SDK and invokes a callback with the result.

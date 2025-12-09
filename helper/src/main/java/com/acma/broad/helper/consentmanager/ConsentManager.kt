@@ -1,7 +1,11 @@
 package com.acma.broad.helper.consentmanager
 
+import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
+import android.provider.Settings
 import android.util.Log
+import com.acma.broad.helper.AdSdkInitializer
 import com.acma.broad.helper.core.AdsConfig
 import com.google.android.ump.ConsentDebugSettings
 import com.google.android.ump.ConsentInformation
@@ -15,12 +19,15 @@ import com.google.android.ump.UserMessagingPlatform
  */
 
 
-object ConsentManager {
+internal object ConsentManager {
+
 
     /**
      * Test device hashed ID used for debugging purposes to simulate consent scenarios.
      */
-    const val TEST_DEVICE_HASHED_ID = "00000A00000A00000A00000A"
+//    const val TEST_DEVICE_HASHED_ID = "00000A00000A00000A00000A"
+    var TEST_DEVICE_HASHED_ID = if (AdsConfig.HashedId.isNotEmpty()) AdsConfig.HashedId[0].toString() else ""
+
 
     /**
      * Requests user consent for showing ads.

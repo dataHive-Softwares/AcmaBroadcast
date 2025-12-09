@@ -12,54 +12,56 @@ object AdsConfig {
      * The AdMob ad unit ID for fixed-size banner ads.
      * Defaults to test ad unit ID in debug builds.
      */
-    var BANNER_ID: String = ""
+    var BANNER_ID: String = "ca-app-pub-3940256099942544/6300978111"
 
     /**
      * The AdMob ad unit ID for interstitial ads.
      * Defaults to test ad unit ID in debug builds.
      */
-    var INTERSTITIAL_AD_ID: String = ""
+    var INTERSTITIAL_AD_ID: String = "ca-app-pub-3940256099942544/1033173712"
 
     /**
      * The AdMob ad unit ID for adaptive banner ads.
      * Defaults to test ad unit ID in debug builds.
      */
-    var ADAPTIVE_BANNER_ID: String = ""
+    var ADAPTIVE_BANNER_ID: String = "ca-app-pub-3940256099942544/6300978111"
 
     /**
      * The AdMob ad unit ID for reward interstitial ads.
      * Defaults to test ad unit ID in debug builds.
      */
-    var REWARD_INTERSTITIAL_AD_ID: String = ""
+    var REWARD_INTERSTITIAL_AD_ID: String = "ca-app-pub-3940256099942544/5354046379"
 
     /**
      * The AdMob ad unit ID for reward ads.
      * Defaults to test ad unit ID in debug builds.
      */
-    var REWARDED_AD_ID: String = ""
+    var REWARDED_AD_ID: String = "ca-app-pub-3940256099942544/5224354917"
 
     /**
      * The AdMob ad unit ID for native ads.
      * Defaults to test ad unit ID in debug builds.
      */
-    var NATIVE_AD_ID: String = ""
+    var NATIVE_AD_ID: String = "ca-app-pub-3940256099942544/2247696110"
 
     /**
      * The AdMob ad unit ID for app open.
      * Defaults to test ad unit ID in debug builds.
      */
-    var APP_OPEN_ID: String = ""
+    var APP_OPEN_ID: String = "ca-app-pub-3940256099942544/3419835294"
 
     /**
      * The AdMob ad unit ID for collapsible banner.
      * Defaults to test ad unit ID in debug builds.
      */
-    var COLLAPSIBLE_BANNER_ID: String = ""
+    var COLLAPSIBLE_BANNER_ID: String = "ca-app-pub-3940256099942544/6300978111"
 
     /**
      * Is Debug check for showing consent
      */
     var IS_DEBUG:Boolean = false
+
+    var HashedId: String = ""
 
     /**
      * default value for adType large

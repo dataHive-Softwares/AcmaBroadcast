@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainHostFragment">
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:constraint_referenced_ids="xmlAdsBtn,ComposeAdsBtn,RewardedInterstitialAdsBtn,RewardedAdsBtn,IntersitialAdBtn,RequestConsentBtn"
+            app:flow_verticalStyle="packed"
+            app:flow_wrapMode="chain"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="10dp" />
+
+        <!-- Xml ads -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/xmlAdsBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="XML Ads" />
+
+        <!-- Compose ads -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/ComposeAdsBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Compose Ads" />
+
+        <!-- Rewarded Interstitial ads -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/RewardedInterstitialAdsBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Rewarded Interstitial Ads" />
+
+        <!-- Rewarded ads -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/RewardedAdsBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Rewarded Ad" />
+
+        <!-- Interstitial Btn -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/IntersitialAdBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Intersitial Ad" />
+
+        <!-- Request Consent ad -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/RequestConsentBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Request Ad consent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

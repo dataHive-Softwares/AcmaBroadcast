@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainHostFragment">
+
+    <fragment
+        android:id="@+id/mainHostFragment"
+        android:name="com.acma.acmabroadtools.MainHostFragment"
+        android:label="fragment_main_host"
+        tools:layout="@layout/fragment_main_host"/>
+
+    <fragment
+        android:id="@+id/xmlAdsHostFragment"
+        android:name="com.acma.acmabroadtools.XmlAdsHostFragment"
+        android:label="fragment_xml_ads_host"
+        tools:layout="@layout/fragment_xml_ads_host"/>
+
+    <fragment
+        android:id="@+id/composeAdsHostFragment"
+        android:name="com.acma.acmabroadtools.ComposeAdsHostFragment"
+        android:label="fragment_compose_ads_host"
+        tools:layout="@layout/fragment_compose_ads_host"/>
+
+</navigation>

@@ -1,3 +1,4 @@
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -51,6 +52,9 @@ dependencies {
     api(libs.play.services.ads)
 
     implementation(libs.kotlinx.serialization)
+
+    // Koin for Dependency Injection
+//    api(libs.koin.android)
 
 
     // Use Compose BOM - Use 'api' to expose it to the app module
