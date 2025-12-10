@@ -33,6 +33,7 @@ class AdaptiveBannerView @JvmOverloads constructor(
      * The ad unit ID is configured, and the adaptive ad size is set.
      */
     private fun initializeAdView() {
+        if (AdsConfig.shouldEnableAdaptiveBannerAds().value.not()) return
         adView = AdView(context).apply {
             adUnitId = AdsConfig.ADAPTIVE_BANNER_ID // Ad unit ID from configuration.
             setAdSize(getAdaptiveBannerAdSize()) // Set adaptive banner ad size.

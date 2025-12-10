@@ -84,7 +84,7 @@ object RewardedAdHelper {
         onAdClosed: () -> Unit,
         onUserEarnedReward: (rewardAmount: Int, rewardType: String) -> Unit
     ) {
-        if (AdsConfig.REWARDED_AD_ID.isEmpty()) {
+        if (AdsConfig.REWARDED_AD_ID.isEmpty() || AdsConfig.shouldEnableRewardAds().value.not()) {
             Log.e(TAG, "Rewarded Ad Unit ID is not set.")
             onAdClosed() // Call the callback immediately if ad is not configured.
             return

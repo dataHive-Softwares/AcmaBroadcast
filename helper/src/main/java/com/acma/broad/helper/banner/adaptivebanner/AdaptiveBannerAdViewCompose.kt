@@ -3,6 +3,7 @@ package com.acma.broad.helper.banner.adaptivebanner
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -15,6 +16,10 @@ import com.google.android.gms.ads.AdView
 
 @Composable
 fun AdaptiveBannerAdView(modifier: Modifier = Modifier) {
+
+    val shouldShowAds = AdsConfig.shouldEnableAdaptiveBannerAds().collectAsState()
+    if (shouldShowAds.value.not()) return
+
     val context = LocalContext.current
 
     // Don't load ads in Preview Mode to avoid crashes

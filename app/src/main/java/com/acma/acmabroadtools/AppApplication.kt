@@ -18,8 +18,8 @@ class AppApplication : Application() {
         val COLLAPSIBLE_BANNER_ID = "ca-app-pub-3940256099942544/9214589741"
 
         val testDeviceIdsList = listOf(
+            "E285DCCB0B75E97D178D508B88BB3EC6", /* Pixel 2 */
             "3C3E0370B130574C31F99DCF2C1A389B", /* Samsung Galaxy S9 Plus */
-            "E285DCCB0B75E97D178D508B88BB3EC6" /* Pixel 2 */
         )
 
         AdSdkInitializer.initialize(
@@ -36,9 +36,7 @@ class AppApplication : Application() {
             collapsibleBannerAd = COLLAPSIBLE_BANNER_ID,
             excludedActivities = listOf(
 //                MainActivity::class.java.canonicalName
-            ),
+            )
         )
-
-
     }
 }

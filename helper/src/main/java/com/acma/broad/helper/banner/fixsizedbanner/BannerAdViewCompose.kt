@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -19,6 +20,10 @@ import com.google.android.gms.ads.AdView
 
 @Composable
 fun BannerAdViewCompose(modifier: Modifier = Modifier) {
+
+    val shouldShowAds = AdsConfig.shouldEnableAdaptiveBannerAds().collectAsState()
+    if (shouldShowAds.value.not()) return
+
     val context = LocalContext.current
 
     // Preview mode — no ad loading

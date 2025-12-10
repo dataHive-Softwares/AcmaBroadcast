@@ -74,17 +74,18 @@ object AdSdkInitializer{
                 .build()
         )
         // Set all ad unit IDs to AdsConfig (shared config holder)
-        AdsConfig.BANNER_ID = bannerId
-        AdsConfig.APP_OPEN_ID = appOpenAd
-        AdsConfig.IS_DEBUG = isDebug
-        AdsConfig.INTERSTITIAL_AD_ID = interstitialAd
-        AdsConfig.ADAPTIVE_BANNER_ID = adaptiveBannerAd
-        AdsConfig.REWARD_INTERSTITIAL_AD_ID = rewardInterstitialAd
-        AdsConfig.REWARDED_AD_ID = rewardAd
-        AdsConfig.NATIVE_AD_ID = nativeAd
-        AdsConfig.COLLAPSIBLE_BANNER_ID = collapsibleBannerAd
-        AdsConfig.HashedId = testDeviceIds.first()
-
+        AdsConfig.apply {
+            BANNER_ID = bannerId
+            APP_OPEN_ID = appOpenAd
+            IS_DEBUG = isDebug
+            INTERSTITIAL_AD_ID = interstitialAd
+            ADAPTIVE_BANNER_ID = adaptiveBannerAd
+            REWARD_INTERSTITIAL_AD_ID = rewardInterstitialAd
+            REWARDED_AD_ID = rewardAd
+            NATIVE_AD_ID = nativeAd
+            COLLAPSIBLE_BANNER_ID = collapsibleBannerAd
+            HashedId = testDeviceIds
+        }
 
         // Initialize Google Mobile Ads SDK
         MobileAds.initialize(application) {
@@ -107,12 +108,10 @@ object AdSdkInitializer{
 
         // Setup App Open ad handler with excluded activities
         appOpenAdHelper = AppOpenAdHelper(application, excludedActivities)
-
     }
 
     /**
      * Utility function to load an ad only once based on a flag.
-     *
      * @param checkFlag Lambda returning a Boolean flag.
      * @param setFlag Lambda to update the flag once loading starts.
      * @param onLoad Lambda to call when loading should occur.
@@ -122,13 +121,11 @@ object AdSdkInitializer{
         setFlag: () -> Unit,
         onLoad: () -> Unit
     ) {
-        if (!checkFlag()) {
+        if (checkFlag().not()) {
             setFlag()
             onLoad()
         }
     }
-
-
 
     /**
      * Requests user consent using Google’s Consent SDK and invokes a callback with the result.

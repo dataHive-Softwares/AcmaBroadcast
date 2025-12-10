@@ -2,6 +2,7 @@ package com.acma.broad.helper.core
 
 import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.ads.AdRequest
+import kotlinx.coroutines.flow.MutableStateFlow
 
 /**
  * Configuration object for managing ad settings across the application.
@@ -61,21 +62,17 @@ object AdsConfig {
      */
     var IS_DEBUG:Boolean = false
 
-    var HashedId: String = ""
-
-    /**
-     * default value for adType large
-     */
-    const val LARGE: String = "large"
-
-    /**
-     * default value for adType medium
-     */
-    const val MEDIUM: String = "medium"
+    var HashedId: List<String> = emptyList()
 
     val request: AdRequest
         get() = AdRequest.Builder().build()
 
-    fun shouldEnablenavtiveAds() : MutableLiveData<Boolean> = MutableLiveData(true)
+    fun shouldEnableNativeAds() : MutableLiveData<Boolean> = MutableLiveData( true)
+    fun shouldEnableInterstitialAds() : MutableStateFlow<Boolean> = MutableStateFlow(value = true)
+    fun shouldEnableAppOpenAds() : MutableStateFlow<Boolean> = MutableStateFlow(value = true)
+    fun shouldEnableRewardAds() : MutableStateFlow<Boolean> = MutableStateFlow(value = true)
+    fun shouldEnableAdaptiveBannerAds() : MutableStateFlow<Boolean> = MutableStateFlow(value = true)
+    fun shouldEnableCollapsibleBannerAds() : MutableStateFlow<Boolean> = MutableStateFlow(value = true)
+
 
 }

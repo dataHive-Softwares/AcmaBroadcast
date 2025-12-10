@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.acma.broad.helper.core.AdsConfig
 
 
 @Composable
@@ -17,6 +18,10 @@ fun <T> NativeAdListCompose(
     adSize: NativeAdSize = NativeAdSize.MEDIUM,
     itemContent: @Composable (T) -> Unit
 ) {
+
+    val shouldShowAds =  AdsConfig.shouldEnableNativeAds().value
+    if (shouldShowAds?.not() ?: true) return
+
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         itemsIndexed(items) { index, item ->
             // Show the regular item

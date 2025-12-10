@@ -9,6 +9,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import com.acma.broad.helper.core.AdsConfig
+import com.acma.broad.helper.nativead.compose.NativeAdSize.LARGE
+import com.acma.broad.helper.nativead.compose.NativeAdSize.MEDIUM
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest
@@ -54,6 +56,10 @@ enum class NativeAdSize {
 fun NativeAdViewCompose(
     adSize: NativeAdSize = NativeAdSize.LARGE
 ) {
+
+    val shouldShowAds =  AdsConfig.shouldEnableNativeAds().value
+    if (shouldShowAds?.not() ?: true) return
+
     val context = LocalContext.current
     // State to hold the loaded native ad
     var nativeAd by remember { mutableStateOf<NativeAd?>(null) }

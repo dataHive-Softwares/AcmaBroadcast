@@ -142,9 +142,9 @@ class AppOpenAdHelper(
         Log.e(TAG, "AdActivity name: ${AdActivity::class.java.canonicalName}" )
         Log.e(TAG, "current activity name: ${currentActivity?.javaClass?.canonicalName}" )
 
-
         // Avoid showing ads if the current activity is the ad activity (which is a special activity for displaying ads).
-        if (AdActivity::class.java.canonicalName == currentActivity?.javaClass?.canonicalName) {
+        if (AdActivity::class.java.canonicalName == currentActivity?.javaClass?.canonicalName ||
+            AdsConfig.shouldEnableAppOpenAds().value.not()) {
             Log.e(TAG, "Since this is ad activity then we cannot show app open it")
             return
         }

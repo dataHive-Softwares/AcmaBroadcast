@@ -2,4 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Native Ad Custom Colors -->
+    <color name="colorHeadLine">#8BC34A</color> <!-- Blue -->
+    <color name="colorBody">#808080</color> <!-- Gray -->
+    <color name="colorAdvertiser">#FFC107</color> <!-- Gray -->
+    <color name="colorActionText">#FFFFFF</color> <!-- White -->
+    <color name="colorActionBackgroundTint">#00BCD4</color> <!-- Blue -->
 </resources>

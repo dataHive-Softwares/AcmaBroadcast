@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
+import com.acma.broad.helper.core.AdsConfig
 import com.google.android.gms.ads.nativead.MediaView
 import com.google.android.gms.ads.nativead.NativeAd
 import com.google.android.gms.ads.nativead.NativeAdView
@@ -56,6 +57,10 @@ internal fun LargeNativeAdView(
     nativeAd: NativeAd,
     modifier: Modifier = Modifier
 ) {
+
+    val shouldShowAds =  AdsConfig.shouldEnableNativeAds().value
+    if (shouldShowAds?.not() ?: true) return
+
     val context = LocalContext.current
 
     AndroidView(

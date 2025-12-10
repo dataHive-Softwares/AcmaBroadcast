@@ -17,7 +17,6 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
  * Handles ad loading, displaying, and lifecycle management.
  */
 
-
 object InterstitialHelper {
 
     // The InterstitialAd instance for displaying full-screen ads.
@@ -80,14 +79,13 @@ object InterstitialHelper {
      * @param onAdClosed A callback that is triggered when the ad is dismissed.
      */
     fun showAd(activity: Activity, onAdClosed: () -> Unit) {
-        if (AdsConfig.INTERSTITIAL_AD_ID.isEmpty()) {
+        if (AdsConfig.INTERSTITIAL_AD_ID.isEmpty() || AdsConfig.shouldEnableInterstitialAds().value.not()) {
             Log.e(TAG, "Interstitial Ad Unit ID is not set.")
             onAdClosed() // Call the callback immediately if ad is not configured.
             return
         }
 
         if (interstitialAd != null) {
-
             // Set up the callback for the ad's full-screen content lifecycle.
             interstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
                 override fun onAdDismissedFullScreenContent() {

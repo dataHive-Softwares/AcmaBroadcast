@@ -1,134 +1,66 @@
 package com.acma.broad.helper.consentmanager
 
-import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.Context
-import android.provider.Settings
-import android.util.Log
-import com.acma.broad.helper.AdSdkInitializer
 import com.acma.broad.helper.core.AdsConfig
 import com.google.android.ump.ConsentDebugSettings
 import com.google.android.ump.ConsentInformation
 import com.google.android.ump.ConsentRequestParameters
-import com.google.android.ump.FormError
 import com.google.android.ump.UserMessagingPlatform
-
-
-/**
- * Manages user consent for personalized ads using Google's User Messaging Platform (UMP).
- */
-
 
 internal object ConsentManager {
 
+    var TEST_DEVICE_HASHED_ID = AdsConfig.HashedId
 
-    /**
-     * Test device hashed ID used for debugging purposes to simulate consent scenarios.
-     */
-//    const val TEST_DEVICE_HASHED_ID = "00000A00000A00000A00000A"
-    var TEST_DEVICE_HASHED_ID = if (AdsConfig.HashedId.isNotEmpty()) AdsConfig.HashedId[0].toString() else ""
-
-
-    /**
-     * Requests user consent for showing ads.
-     *
-     * @param activity The current activity context.
-     * @param onConsentResult Callback invoked with the result:
-     * - `true` if ads can be shown.
-     * - `false` if ads should not be shown.
-     */
     fun requestConsent(activity: Activity, onConsentResult: (Boolean) -> Unit) {
-        // Retrieve the consent information instance
-        // Gets the current consent status for the user.
-        val consentInformation = UserMessagingPlatform.getConsentInformation(activity)
+        val consentInfo = UserMessagingPlatform.getConsentInformation(activity)
 
-        // If consent is not required and it's not a debug build, return the consent result
-        // Skip consent in non-debug and not-required cases
-        if (AdsConfig.IS_DEBUG.not()) {
-            if (consentInformation.isNotRequired) {
-                onConsentResult.invoke(consentInformation.canRequestAds())
-                return
-            }
+        // Skip consent form for production if not required
+        if (!AdsConfig.IS_DEBUG && consentInfo.isNotRequired) {
+            onConsentResult(consentInfo.canRequestAds())
+            return
         }
 
-        // Set up debug settings for testing purposes
-        val debugSettings = ConsentDebugSettings.Builder(activity)
-            .apply {
-                if (AdsConfig.IS_DEBUG) {
-                    setDebugGeography(ConsentDebugSettings.DebugGeography.DEBUG_GEOGRAPHY_EEA)
-                    addTestDeviceHashedId(TEST_DEVICE_HASHED_ID)
-                }
+        val debugSettings = ConsentDebugSettings.Builder(activity).apply {
+            if (AdsConfig.IS_DEBUG) {
+                setDebugGeography(ConsentDebugSettings.DebugGeography.DEBUG_GEOGRAPHY_EEA)
+                TEST_DEVICE_HASHED_ID.forEach { addTestDeviceHashedId(it) }
             }
-            .build()
+        }.build()
 
-        // Set up consent request parameters
-        // Prepares the full configuration for the consent request.
         val params = ConsentRequestParameters.Builder()
             .setConsentDebugSettings(debugSettings)
             .build()
 
-        // Success listener for consent info update
-        val successListener = {
-            if (consentInformation.isConsentFormAvailable && consentInformation.consentStatus == 2) {
-                Log.d("TAG", "requestConsent: ${consentInformation.consentStatus}")
-                Log.d("TAG", "status: ${consentInformation.consentStatus == 2}")
-
-                // Load and show the consent form if required
-                loadAndShowConsentForm(activity, consentInformation, onConsentResult)
+        consentInfo.requestConsentInfoUpdate(activity, params, {
+            if (consentInfo.isConsentFormAvailable &&
+                consentInfo.consentStatus == ConsentInformation.ConsentStatus.REQUIRED
+            ) {
+                loadAndShowConsentForm(activity, consentInfo, onConsentResult)
             } else {
-                onConsentResult(true) // Consent is not required, ads can be shown
+                onConsentResult(consentInfo.canRequestAds())
             }
-        }
-
-        // Failed listener for consent info update
-        val failedListener: (FormError) -> Unit = {
-            onConsentResult(false) // Ads cannot be shown due to failure
-        }
-        // Request consent information update
-        // This asks Google for updated consent info and handles it with the two listeners.
-        consentInformation.requestConsentInfoUpdate(
-            activity, params, successListener, failedListener
-        )
+        }, {
+            onConsentResult(false)
+        })
     }
 
-    /**
-     * Loads and displays the consent form if required.
-     *
-     * @param activity The current activity context.
-     * @param consentInformation The consent information object.
-     * @param onConsentResult Callback invoked with the result:
-     * - `true` if ads can be shown.
-     * - `false` otherwise.
-     */
     private fun loadAndShowConsentForm(
         activity: Activity,
-        consentInformation: ConsentInformation,
+        consentInfo: ConsentInformation,
         onConsentResult: (Boolean) -> Unit
     ) {
-        // Load the consent form
-        UserMessagingPlatform.loadConsentForm(
-            activity,
-            { consentForm ->
-                // Show the consent form and process the user's response
-                consentForm.show(activity) {
-                    Log.d("TAG", "loadAndShowConsentForm: ${consentInformation.canRequestAds()}")
-                    onConsentResult(consentInformation.canRequestAds())
-                }
-            }, {
-                onConsentResult(false) // Ads cannot be shown due to failure
+        UserMessagingPlatform.loadConsentForm(activity, { form ->
+            form.show(activity) {
+                onConsentResult(consentInfo.canRequestAds())
             }
-        )
+        }, {
+            onConsentResult(false)
+        })
     }
 
-    /**
-     * Extension property to check if consent is required.
-     */
     private val ConsentInformation.isRequired: Boolean
         get() = consentStatus == ConsentInformation.ConsentStatus.REQUIRED
 
-    /**
-     * Extension property to check if consent is not required.
-     */
     private val ConsentInformation.isNotRequired: Boolean
         get() = isRequired.not()
 }

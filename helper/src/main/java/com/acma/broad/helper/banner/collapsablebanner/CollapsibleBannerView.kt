@@ -49,6 +49,7 @@ class CollapsibleBannerView @JvmOverloads constructor(
      * Sets the AdUnitId, AdSize, and creates an AdRequest with required extras.
      */
     private fun initializeAdView() {
+        if (AdsConfig.shouldEnableCollapsibleBannerAds().value.not()) return
         // Create and configure an AdView for displaying banner ads.
         adView = AdView(context).apply {
             adUnitId = AdsConfig.COLLAPSIBLE_BANNER_ID // Set the AdUnitId from AdsConfig.

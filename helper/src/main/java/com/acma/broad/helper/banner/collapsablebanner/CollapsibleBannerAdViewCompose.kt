@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.DisplayMetrics
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
@@ -18,6 +19,10 @@ import com.google.android.gms.ads.AdView
 
 @Composable
 fun CollapsibleBannerAdView() {
+
+    val shouldShowAds = AdsConfig.shouldEnableCollapsibleBannerAds().collectAsState()
+    if (shouldShowAds.value.not()) return
+
     val context = LocalContext.current
 
     // Skip in preview mode to avoid crashes
@@ -61,7 +66,7 @@ fun CollapsibleBannerAdView() {
 /**
  * Calculate the adaptive banner size based on the Activity's current screen width.
  */
-fun Activity.getAdaptiveBannerAdSize(): AdSize {
+private fun Activity.getAdaptiveBannerAdSize(): AdSize {
     val displayMetrics = DisplayMetrics()
     windowManager.defaultDisplay.getMetrics(displayMetrics)
 
@@ -71,7 +76,3 @@ fun Activity.getAdaptiveBannerAdSize(): AdSize {
 
     return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, adWidthDp)
 }
-
-/**
- * Safely unwrap Activity from Context or ContextWrapper.
- */

@@ -28,7 +28,7 @@ class GenericNativeAdView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(mContext, attrs, defStyleAttr) {
 
-    private val shouldEnableNativeAds = AdsConfig.shouldEnablenavtiveAds()
+    private val shouldEnableNativeAds = AdsConfig.shouldEnableNativeAds()
     private val contentDefault = 0
     private val contentSmall = 1
     private val contentMedium = 2

@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
+import com.acma.broad.helper.core.AdsConfig
 import com.google.android.gms.ads.nativead.NativeAd
 import com.google.android.gms.ads.nativead.NativeAdView
 
@@ -47,6 +48,10 @@ import com.google.android.gms.ads.nativead.NativeAdView
 
 @Composable
 internal fun MediumNativeAdView(nativeAd: NativeAd, modifier: Modifier = Modifier) {
+
+    val shouldShowAds =  AdsConfig.shouldEnableNativeAds().value
+    if (shouldShowAds?.not() ?: true) return
+
     val context = LocalContext.current
 
     AndroidView(
